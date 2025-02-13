@@ -1,3 +1,9 @@
+/**
+ * This component was developed using Material UI with assistance from GPT.
+ * i'm not used Material UI a lot but i learning it and i will improve myself to be better
+ * Developed by: [Ahmed Khaled Fouda]
+ */
+
 import {
   Table,
   TableContainer,
@@ -28,8 +34,8 @@ function CarList({ setIsSelected }) {
     loading,
     selectedCars,
     setSelectedCars,
-    open,
-    setOpen,
+    isOpen,
+    setIsOpen,
     sortBy,
     setSortBy,
     handleDeleteConfirm,
@@ -136,12 +142,13 @@ function CarList({ setIsSelected }) {
       </TableContainer>
 
       <Typography textAlign="center" sx={{ mt: 2 }}>
-        The Total Cars is <span style={{ color: "red" }}>{cars.length}</span>
+        The Total Cars Added{" "}
+        <span style={{ color: "green" }}>({cars.length})</span>
       </Typography>
 
       {selectedCars.length > 0 && (
         <CustomButton
-          onClick={() => setOpen(true)}
+          onClick={() => setIsOpen(true)}
           variant="contained"
           color="error"
           fullWidth
@@ -155,7 +162,7 @@ function CarList({ setIsSelected }) {
         </CustomButton>
       )}
 
-      <Dialog open={open} onClose={() => setOpen(false)}>
+      <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
         <DialogTitle>Confirm Deletion</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -163,7 +170,7 @@ function CarList({ setIsSelected }) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <CustomButton onClick={() => setOpen(false)} color="primary">
+          <CustomButton onClick={() => setIsOpen(false)} color="primary">
             Cancel
           </CustomButton>
           <CustomButton onClick={handleDeleteConfirm} color="error">
