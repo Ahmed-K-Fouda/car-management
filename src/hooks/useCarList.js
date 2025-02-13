@@ -8,7 +8,7 @@ export const useCarList = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const [selectedCars, setSelectedCars] = useState([]);
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [sortBy, setSortBy] = useState("");
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export const useCarList = () => {
     dispatch(deleteCar(selectedCars));
     toast.success("The car(s) deleted successfully!");
     setSelectedCars([]);
-    setOpen(false);
+    setIsOpen(false);
   }, [dispatch, selectedCars]);
 
   // to prevent re-render every time sorting the array
@@ -39,8 +39,8 @@ export const useCarList = () => {
     loading,
     selectedCars,
     setSelectedCars,
-    open,
-    setOpen,
+    isOpen,
+    setIsOpen,
     sortBy,
     setSortBy,
     handleDeleteConfirm,
