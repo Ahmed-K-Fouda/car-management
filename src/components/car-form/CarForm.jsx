@@ -4,10 +4,8 @@ import { carColors } from "../../constants/colors/colors";
 import CustomButton from "../ui/CustomButton";
 
 function CarForm({ isSelected, setIsSelected }) {
-  const { car, isLoading, handleChange, handleSubmit } = useCarForm(
-    isSelected,
-    setIsSelected
-  );
+  const { car, isLoading, handleChange, handleSubmit, checkValidity } =
+    useCarForm(isSelected, setIsSelected);
 
   return (
     <Box sx={{ p: 3, boxShadow: 4, borderRadius: 3 }}>
@@ -62,6 +60,7 @@ function CarForm({ isSelected, setIsSelected }) {
         onChange={handleChange}
       />
       <CustomButton
+        disabled={checkValidity}
         onClick={handleSubmit}
         variant="contained"
         fullWidth
