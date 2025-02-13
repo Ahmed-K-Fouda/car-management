@@ -23,6 +23,9 @@ export const useCarForm = (isSelected, setIsSelected) => {
     setCar((prev) => ({ ...prev, [name]: value }));
   }, []);
 
+  const checkValidity =
+    !car.model || !car.price || !car.color || !car.date || !car.image;
+
   //   help with gpt for use - useCallBack
   const handleSubmit = useCallback(() => {
     // check if all inputs has value to add
@@ -53,5 +56,5 @@ export const useCarForm = (isSelected, setIsSelected) => {
     }, 1000);
   }, [car, dispatch, isSelected, setIsSelected]);
 
-  return { car, isLoading, handleChange, handleSubmit };
+  return { car, isLoading, handleChange, handleSubmit, checkValidity };
 };
